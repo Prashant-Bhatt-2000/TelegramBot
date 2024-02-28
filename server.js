@@ -8,6 +8,7 @@ const app = express();
 const botToken = process.env.BOT_TOKEN;  // Please Put your own BOT_TOKEN
 const bot = new TelegramBot(botToken, { polling: true });
 
+app.use('/api', require('./router/userRoute'))
 app.post(`/telegram/${botToken}`, (req, res) => {
     bot.processUpdate(req.body);
     res.sendStatus(200);
